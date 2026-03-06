@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Produtos</title>
+  </head>
+  <body>
+    <form action="{% url 'salvar_produto' %}" method="POST">
+      {% csrf_token %}
+      <input type="text" name="name" />
+      <input type="text" name="price" />
+      <input type="text" name="storage" />
+      <input type="text" name="category_id" />
+      <button type="submit">salvar</button>
+    </form>
+
+    <ul>
+      {% for produto in produtos %}
+      <li>
+        {{ produto.name }} - {{ produto.price }} - {{ produto.storage }} -
+        {{produto.category_id.name }}
+        <a href="{% url 'editar_produto' produto.id %}">Editar</a>
+        <a href="">Deletar</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

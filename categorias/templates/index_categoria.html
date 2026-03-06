@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>categorias</title>
   </head>
   <body>
-    <form action="{% url 'salvar' %}" method="POST">
+    <form action="{% url 'salvar_categoria' %}" method="POST">
       {% csrf_token %}
       <input type="text" name="name" />
       <button type="submit">salvar</button>
@@ -16,8 +16,8 @@
       {% for categoria in categorias %}
       <li>
         {{categoria.id}} - {{ categoria.name }}
-        <a href="{% url 'editar' categoria.id %}">Editar</a>
-        <a href="{% url 'deletar' categoria.id %}">Deletar</a>
+        <a href="{% url 'editar_categoria' categoria.id %}">Editar</a>
+        <a href="{% url 'deletar_categoria' categoria.id %}">Deletar</a>
       </li>
       {% endfor %}
     </ul>
