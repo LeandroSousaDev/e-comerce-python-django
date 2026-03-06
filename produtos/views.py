@@ -39,3 +39,8 @@ def deletar_produto(request, id):
     produto = Produto.objects.get(id=id)
     produto.delete()
     return redirect(home)
+
+def produtos_por_categoria(request, category_id):
+    categoria = Categoria.objects.get(id=category_id)
+    produtos = Produto.objects.filter(category_id=categoria)
+    return render(request, "produtos_por_categoria.html", {"produtos": produtos, "categoria": categoria})

@@ -9,7 +9,7 @@
     {{categoria.id}} - {{categoria.name}}
     <form action="{% url 'update_categoria' categoria.id %}" method="POST">
       {% csrf_token %}
-      <input type="text" name="name" />
+      <input type="text" name="name" placeholder="nome" />
       <button type="submit">editar</button>
     </form>
   </body>

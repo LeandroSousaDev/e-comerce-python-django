@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import home, salvar_produto, editar_produto, update_produto, deletar_produto
+from .views import home, salvar_produto, editar_produto, update_produto, deletar_produto, produtos_por_categoria
 
 urlpatterns = [
     path("", home),
@@ -8,4 +8,5 @@ urlpatterns = [
     path("editar/<int:id>/", editar_produto, name="editar_produto"),
     path("update/<int:id>/", update_produto, name="update_produto"),
     path("delete/<int:id>/", deletar_produto, name="deletar_produto"),
+    path("categoria/<int:category_id>/", produtos_por_categoria, name="produtos_por_categoria"),
 ]
