@@ -34,3 +34,8 @@ def update_produto(request, id):
     produto.category_id = categoria
     produto.save()
     return redirect(home)
+
+def deletar_produto(request, id):
+    produto = Produto.objects.get(id=id)
+    produto.delete()
+    return redirect(home)

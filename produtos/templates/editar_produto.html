@@ -8,10 +8,10 @@
   <body>
     <form action="{% url 'update_produto' produto.id %}" method="POST">
       {% csrf_token %}
-      <input type="text" name="name" />
-      <input type="text" name="price" />
-      <input type="text" name="storage" />
-      <input type="text" name="category_id" />
+      <input type="text" name="name" placeholder="nome" />
+      <input type="text" name="price" placeholder="preço" />
+      <input type="text" name="storage" placeholder="estoque" />
+      <input type="text" name="category_id" placeholder="categoria" />
       <button type="submit">Editar</button>
     </form>
 

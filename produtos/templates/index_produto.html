@@ -8,10 +8,10 @@
   <body>
     <form action="{% url 'salvar_produto' %}" method="POST">
       {% csrf_token %}
-      <input type="text" name="name" />
-      <input type="text" name="price" />
-      <input type="text" name="storage" />
-      <input type="text" name="category_id" />
+      <input type="text" name="name" placeholder="nome" />
+      <input type="text" name="price" placeholder="preço" />
+      <input type="text" name="storage" placeholder="estoque" />
+      <input type="text" name="category_id" placeholder="categoria" />
       <button type="submit">salvar</button>
     </form>
 
@@ -21,7 +21,7 @@
         {{ produto.name }} - {{ produto.price }} - {{ produto.storage }} -
         {{produto.category_id.name }}
         <a href="{% url 'editar_produto' produto.id %}">Editar</a>
-        <a href="">Deletar</a>
+        <a href="{% url 'deletar_produto' produto.id %}">Deletar</a>
       </li>
       {% endfor %}
     </ul>
