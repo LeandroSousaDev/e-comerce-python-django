@@ -6,24 +6,102 @@
     <title>Produtos</title>
   </head>
   <body>
-    <form action="{% url 'salvar_produto' %}" method="POST">
-      {% csrf_token %}
-      <input type="text" name="name" placeholder="nome" />
-      <input type="text" name="price" placeholder="preço" />
-      <input type="text" name="storage" placeholder="estoque" />
-      <input type="text" name="category_id" placeholder="categoria" />
-      <button type="submit">salvar</button>
-    </form>
+    <div class="formulario">
+      <h1>Produtos</h1>
+      <form action="{% url 'salvar_produto' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="nome" />
+        <input type="text" name="price" placeholder="preço" />
+        <input type="text" name="storage" placeholder="estoque" />
+        <input type="text" name="category_id" placeholder="categoria" />
+        <button type="submit">salvar</button>
+      </form>
+    </div>
 
-    <ul>
-      {% for produto in produtos %}
-      <li>
-        {{ produto.name }} - {{ produto.price }} - {{ produto.storage }} -
-        {{produto.category_id.name }}
-        <a href="{% url 'editar_produto' produto.id %}">Editar</a>
-        <a href="{% url 'deletar_produto' produto.id %}">Deletar</a>
-      </li>
-      {% endfor %}
-    </ul>
+    <div class="lista">
+      <h1>Lista de produtos</h1>
+      <ul>
+        {% for produto in produtos %}
+        <li>
+          <div>
+            Nome:{{ produto.name }} - Preço: R$ {{ produto.price }} - Estoque:
+            {{ produto.storage }} - Categoria: {{produto.category_id.name }}
+          </div>
+          <div>
+            <button>
+              <a href="{% url 'editar_produto' produto.id %}">Editar</a>
+            </button>
+            <button>
+              <a href="{% url 'deletar_produto' produto.id %}">Deletar</a>
+            </button>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
   </body>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+
+    .formulario {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    .formulario input {
+      width: 100%;
+      border-radius: 8px;
+      height: 30px;
+      margin: 5px;
+      padding: 10px;
+    }
+    .formulario button {
+      width: 100%;
+      border-radius: 8px;
+      height: 30px;
+      margin: 5px;
+    }
+
+    .lista {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .lista button {
+      height: 30px;
+      width: 60px;
+      border-radius: 8px;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  </style>
 </html>

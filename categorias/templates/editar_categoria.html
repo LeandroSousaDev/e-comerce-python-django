@@ -6,11 +6,52 @@
     <title>Document</title>
   </head>
   <body>
-    {{categoria.id}} - {{categoria.name}}
+    <h1>Editar Categoria</h1>
     <form action="{% url 'update_categoria' categoria.id %}" method="POST">
       {% csrf_token %}
       <input type="text" name="name" placeholder="nome" />
-      <button type="submit">editar</button>
+      <button type="submit">Editar</button>
     </form>
+    {{categoria.id}} - {{categoria.name}}
   </body>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+
+    input {
+      padding: 10px;
+      height: 30px;
+      border-radius: 8px;
+    }
+
+    button {
+      padding: 10px;
+      height: 40px;
+      border-radius: 8px;
+    }
+  </style>
 </html>

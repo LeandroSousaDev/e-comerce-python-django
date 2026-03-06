@@ -6,6 +6,7 @@
     <title>Document</title>
   </head>
   <body>
+    <h1>Editar Produto</h1>
     <form action="{% url 'update_produto' produto.id %}" method="POST">
       {% csrf_token %}
       <input type="text" name="name" placeholder="nome" />
@@ -15,7 +16,49 @@
       <button type="submit">Editar</button>
     </form>
 
-    {{produto.id}} - {{produto.name}} - {{produto.price}} - {{produto.storage}}
-    - {{produto.category_id.name}}
+    <p>
+      Nome: {{produto.name}} - Preço: R$ {{produto.price}} - Estoque:
+      {{produto.storage}} - Categoria: {{produto.category_id.name}}
+    </p>
   </body>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 700px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+
+    input {
+      padding: 10px;
+      height: 40px;
+      border-radius: 8px;
+    }
+
+    button {
+      padding: 10px;
+      height: 40px;
+      border-radius: 8px;
+    }
+  </style>
 </html>

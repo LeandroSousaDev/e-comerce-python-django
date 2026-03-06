@@ -3,24 +3,104 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>categorias</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Categorias</title>
   </head>
   <body>
-    <form action="{% url 'salvar_categoria' %}" method="POST">
-      {% csrf_token %}
-      <input type="text" name="name" placeholder="nome"" />
-      <button type="submit">salvar</button>
-    </form>
+    <div class="formulario">
+      <h1>Categorias</h1>
+      <form action="{% url 'salvar_categoria' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="nome"" />
+        <button type="submit">salvar</button>
+      </form>
+    </div>
 
-    <ul>
-      {% for categoria in categorias %}
-      <li>
-        {{categoria.id}} - {{ categoria.name }}
-        <a href="{% url 'editar_categoria' categoria.id %}">Editar</a>
-        <a href="{% url 'deletar_categoria' categoria.id %}">Deletar</a>
-        <a href="{% url 'produtos_por_categoria' categoria.id %}">Produtos</a>
-      </li>
-      {% endfor %}
-    </ul>
+    <div class="lista">
+      <h1>Lista de categorias</h1>
+      <ul>
+        {% for categoria in categorias %}
+        <li>
+          <div>
+            Codigo: {{categoria.id}} - Nome: {{ categoria.name }}
+          </div>
+          <div>
+            <button><a href="{% url 'produtos_por_categoria' categoria.id %}">Produtos</a></button>
+            <button><a href="{% url 'editar_categoria' categoria.id %}">Editar</a></button>
+            <button><a href="{% url 'deletar_categoria' categoria.id %}">Deletar</a></button>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
   </body>
+  <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+
+  .formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+
+  .lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+  }
+
+  input{
+    padding: 10px;
+    height: 30px;
+    border-radius: 8px;
+  }
+
+  .formulario button{
+    height: 30px;
+    width: 60px;
+    border-radius: 8px;
+  }
+
+  .lista h1 {
+    text-align: center;
+  }
+
+  .lista button {
+    height: 30px;
+    width: 80px;
+    border-radius: 8px;
+    margin-left: 5px;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  </style>
 </html>
